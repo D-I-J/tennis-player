@@ -37,4 +37,10 @@ public class PlayerDao {
 
         return jdbcTemplate.update(sql, new Object[]{player.getName(), player.getNationality(), new Timestamp(player.getBirthDate().getTime()), player.getTitles(),player.getId()});
     }
+
+    public int deletePlayerById(int id){
+        String sql = "DELETE FROM Player WHERE ID = ?";
+
+        return jdbcTemplate.update(sql,new Object[] {id});
+    }
 }
