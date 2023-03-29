@@ -9,6 +9,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.Date;
 
+import static java.sql.Date.valueOf;
+
+
 @SpringBootApplication
 public class TennisPlayerApplication implements CommandLineRunner {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -21,12 +24,20 @@ public class TennisPlayerApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		//Inserting a player
 		logger.info("Inserting Player 4: {}", dao.insertPlayer(
-				new Player (4, "Thiem", "Austria",
-						new Date(System.currentTimeMillis()),
-						17 )));
-		logger.info("All Players Data: {}", dao.getAllPlayers());
-//		logger.info("Player with Id 3: {}", dao.getPlayerById(3));
+				new Player(4, "Thiem", "Austria",
+						new Date(System.currentTimeMillis()), 17)));
+		//View player by Id
+		logger.info("Players with Id 4: {}", dao.getPlayerById(4));
+
+		//Updating a player
+		logger.info("Updating Player with Id 4: {}",  dao.updatePlayer(
+				new Player(4, "Thiem", "Austria",
+						java.sql.Date.valueOf("1993-09-03"), 17)));
+
+		//View player by Id
+		logger.info("Players with Id 4: {}", dao.getPlayerById(4));
 	}
 }
 
