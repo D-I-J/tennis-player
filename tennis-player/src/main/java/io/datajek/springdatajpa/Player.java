@@ -9,7 +9,7 @@ import java.util.Date;
 @NamedQuery(name = "get_all_players", query = "SELECT p FROM Player p") //named query
 public class Player {
 @Id
-@GeneratedValue
+@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
     @Column(name = "nationality")
